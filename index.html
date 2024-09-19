@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História Piratiada</title>
+  
+</head>
+<body>
+    <div class="container">
+        <h1>Aventura do Herói</h1>
+        <p id="story"></p>
+        <button id="option1" onclick="chooseOption(1)">Opção 1</button>
+        <button id="option2" onclick="chooseOption(2)">Opção 2</button>
+    </div>
+
+    <script>
+        // Função para atualizar a história com base na escolha do jogador
+        function updateStory(text, option1Text, option2Text, option1Action, option2Action) {
+            document.getElementById('story').textContent = text;
+            document.getElementById('option1').textContent = option1Text;
+            document.getElementById('option1').setAttribute('onclick', `chooseOption(${option1Action})`);
+            document.getElementById('option2').textContent = option2Text;
+            document.getElementById('option2').setAttribute('onclick', `chooseOption(${option2Action})`);
+        }
+
+        // Função chamada quando uma opção é escolhida
+        function chooseOption(option) {
+            if (option === 1) {
+                updateStory(
+                    'Você encontrou um antigo templo escondido na floresta. Dentro, há duas portas. Uma delas brilha com uma luz dourada, enquanto a outra é coberta por símbolos misteriosos.',
+                    'Entrar pela porta dourada',
+                    'Explorar os símbolos misteriosos',
+                    3,
+                    4
+                );
+            } else if (option === 2) {
+                updateStory(
+                    'Você decide seguir o caminho ao longo do rio e encontra uma aldeia onde os habitantes são amigáveis e oferecem ajuda.',
+                    'Aceitar a ajuda dos habitantes',
+                    'Continuar a jornada sozinho',
+                    5,
+                    6
+                );
+            } else if (option === 3) {
+                updateStory(
+                    'Ao entrar pela porta dourada, você encontra um tesouro fabuloso! Parabéns, você completou sua missão com sucesso!',
+                    'Começar novamente',
+                    '',
+                    1,
+                    0
+                );
+                document.getElementById('option2').style.display = 'none';
+            } else if (option === 4) {
+                updateStory(
+                    'Ao explorar os símbolos misteriosos, você é confrontado por um guardião que testa sua sabedoria. Infelizmente, você não consegue responder corretamente e acaba preso.',
+                    'Começar novamente',
+                    '',
+                    1,
+                    0
+                );
+                document.getElementById('option2').style.display = 'none';
+            } else if (option === 5) {
+                updateStory(
+                    'Os habitantes da aldeia oferecem um mapa que revela a localização de um tesouro escondido. Com a ajuda deles, você encontra o tesouro e completa sua missão!',
+                    'Começar novamente',
+                    '',
+                    1,
+                    0
+                );
+                document.getElementById('option2').style.display = 'none';
+            } else if (option === 6) {
+                updateStory(
+                    'Você decide continuar sua jornada sozinho, mas enfrenta muitos desafios e acaba perdido na floresta.',
+                    'Começar novamente',
+                    '',
+                    1,
+                    0
+                );
+                document.getElementById('option2').style.display = 'none';
+            }
+        }
+
+        // Inicializa o jogo com a primeira parte da história
+        updateStory(
+            'Você é um herói em uma missão para encontrar um tesouro perdido. Sua jornada começa agora. Qual caminho você escolherá?',
+            'Explorar a floresta',
+            'Seguir o rio',
+            1,
+            2
+        );
+    </script>
+</body>
+</html>
